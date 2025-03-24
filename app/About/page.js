@@ -7,7 +7,6 @@ export default function About() {
   return (
     <div>
       <Navbar />
-      <HeroAbout />
       <AboutContent />
       <Footer />
 

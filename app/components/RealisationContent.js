@@ -1,8 +1,29 @@
+import next from "next";
+import Image from 'next/image'
+import prop10 from '../../public/assets/img/prop10.jpg'
+
 
 export default function CustomerReviews() {
     return (
 
         <>
+            <div className="relative h-[600px] overflow-hidden">
+                <Image
+                    src={prop10} // Remplacez par le chemin de votre image
+                    width="{50%}"
+                    height="{50%}"
+                    alt="About Hero"
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay noir */}
+                <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-8">
+                    <h1 className="text-4xl font-bold mb-4">Nos Services</h1>
+                    <p className="text-lg">
+                        Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua
+                        enim minim estudiat veniam siad venumus dolore
+                    </p>
+                </div>
+            </div>
             <div className="bg-gray-100 py-12">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

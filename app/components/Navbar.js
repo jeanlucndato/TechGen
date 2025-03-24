@@ -34,7 +34,7 @@ export default function Navbar() {
         }`}
     >
       <div className="container mx-auto flex flex-col md:flex-row md:justify-between md:items-center">
-        <div className="flex justify-between items-center w-full md:w-auto">
+        <div className="flex justify-between items-center w-full md:w-auto  ">
           <Link
             href="/"
             className={`text-white font-bold text-3xl ${bebasNeue.className}`}
@@ -42,7 +42,7 @@ export default function Navbar() {
             GenTech
           </Link>
           <button
-            className="md:hidden text-white focus:outline-none"
+            className="md:hidden text-white  focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg
@@ -67,7 +67,7 @@ export default function Navbar() {
         </div>
         <div
           className={`space-x-4 mt-4 md:mt-0 md:flex ${isMenuOpen ? 'flex flex-col' : 'hidden'
-            } md:flex`}
+            } md:flex  `}
         >
           <Link href="/" className="text-gray-300 hover:text-white">
             ACCUEIL

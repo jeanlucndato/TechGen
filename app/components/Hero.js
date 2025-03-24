@@ -20,7 +20,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative h-[500px] overflow-hidden">
+    <div className="relative h-[600px] overflow-hidden">
       <Image
         src={hero}
         alt="Hero Background"

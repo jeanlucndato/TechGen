@@ -1,11 +1,16 @@
-import back from '../../public/assets/img/bg.jpg'
+import Image from 'next/image'
+import prop9 from '../../public/assets/img/prop9.jpg'
+
+
+
+
 export default function CustomerReviews() {
   return (
 
     <>
-      <div className="relative h-[400px] overflow-hidden">
-        <img
-          src={back} // Remplacez par le chemin de votre image
+      <div className="relative h-[600px] overflow-hidden">
+        <Image
+          src={prop9} // Remplacez par le chemin de votre image
           width="{50%}"
           height="{50%}"
           alt="About Hero"

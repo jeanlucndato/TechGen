@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import back from '../../public/assets/img/bg.jpg'
+import prop8 from '../../public/assets/img/prop8.jpg'
 
 
 export default function AboutContent() {
   return (
     <>
-      <div className="relative h-[500px] overflow-hidden"> {/* Ajustez la hauteur selon vos besoins */}
+      <div className="relative h-[600px] overflow-hidden"> {/* Ajustez la hauteur selon vos besoins */}
         {/* Image de fond principale */}
         <Image
           src={back}
@@ -79,8 +80,10 @@ export default function AboutContent() {
 
               {/* Image à droite */}
               <div>
-                <img
-                  src="URL_DE_L_IMAGE"
+                <Image
+                  src={prop8}
+                  width='{50 %}'
+                  height='{50 %}'
                   alt="Description de l'image"
                   className="w-full rounded-lg"
                 />

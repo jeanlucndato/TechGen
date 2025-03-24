@@ -3,10 +3,10 @@ import Link from 'next/link';
 export default function Navbar() {
   return (
 
-    <nav className="bg-gray-800 p-4 md:flex md:items-center md:justify-between">
-      <div className="container mx-auto">
-        <Link href="/" className="text-white font-bold text-xl">
-          GenTech {/*great */}
+    <nav className="bg-gray-800 p-4">
+      <div className="container mx-auto flex flex-col md:flex-row md:justify-between md:items-center">
+        <Link href="/" className="text-white font-bold text-3xl mb-4 md:mb-0">
+          GenTech
         </Link>
         <div className="space-x-4">
           <Link href="/" className="text-gray-300 hover:text-white">

@@ -1,31 +1,45 @@
-import Image from 'next/image'; // Importez le composant Image de Next.js
+"use client"; // Assurez-vous d'inclure cette directive si vous utilisez useState
+
+import React, { useState } from 'react';
+import Image from 'next/image';
+import prop7 from '../../public/assets/img/prop7.jpg'
 
 export default function LatestProducts() {
-  const products = [
+  const produits = [
     {
-      title: "Triangle Roof",
-      category: "MANAGEMENT",
+      titre: "Triangle Roof",
+      categorie: "MANAGEMENT",
       description: "Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolor magna ut consequat siad esqudiat dolor",
-      imageUrl: "/images/product1.jpg", // Remplacez par le chemin de votre image
+      imageUrl: prop7, // Remplacez par le chemin de votre image
     },
     {
-      title: "Curved Corners",
-      category: "DEVELOPMENT",
+      titre: "Curved Corners",
+      categorie: "DEVELOPMENT",
       description: "Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolor magna ut consequat siad esqudiat dolor",
       imageUrl: "/images/product2.jpg", // Remplacez par le chemin de votre image
     },
     {
-      title: "Bird On Green",
-      category: "DESIGN",
+      titre: "Bird On Green",
+      categorie: "DESIGN",
       description: "Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolor magna ut consequat siad esqudiat dolor",
       imageUrl: "/images/product3.jpg", // Remplacez par le chemin de votre image
     },
   ];
 
+  const [produitEtendu, setProduitEtendu] = useState(null);
+
+  const handleLirePlus = (index) => {
+    setProduitEtendu(index);
+  };
+
+  const handleFermer = () => {
+    setProduitEtendu(null);
+  };
+
   return (
     <div className="bg-white py-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-semibold mb-6">Latest Products</h2>
+        <h2 className="text-3xl font-semibold mb-6">Derniers Produits</h2>
         <p className="text-gray-600 mb-8">
           Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor
           incididunt ut laboret dolore magna aliqua enim minim veniam
@@ -33,22 +47,40 @@ export default function LatestProducts() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {products.map((product, index) => (
+          {produits.map((produit, index) => (
             <div key={index} className="border rounded-lg overflow-hidden">
               <div className="relative h-64">
                 <Image
-                  src={product.imageUrl}
-                  alt={product.title}
+                  src={produit.imageUrl}
+                  alt={produit.titre}
                   layout="fill"
                   objectFit="cover"
                 />
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
-                <span className="text-sm text-gray-500">{product.category}</span>
-                <p className="text-gray-600 mt-2">{product.description}</p>
-                <button className="text-blue-500 mt-4">READ MORE</button>
+                <h3 className="text-xl font-semibold mb-2">{produit.titre}</h3>
+                <span className="text-sm text-gray-500">{produit.categorie}</span>
+                <p className="text-gray-600 mt-2">
+                  {produitEtendu === index
+                    ? produit.description
+                    : produit.description.substring(0, 100) + "..."}
+                </p>
+                {produitEtendu === index ? (
+                  <button
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4"
+                    onClick={handleFermer}
+                  >
+                    Fermer
+                  </button>
+                ) : (
+                  <button
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4"
+                    onClick={() => handleLirePlus(index)}
+                  >
+                    Lire plus
+                  </button>
+                )}
               </div>
             </div>
           ))}

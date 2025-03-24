@@ -1,5 +1,5 @@
+import Image from 'next/image';
 import back from '../../public/assets/img/bg.jpg'
-
 
 
 export default function AboutContent() {
@@ -7,20 +7,13 @@ export default function AboutContent() {
     <>
       <div className="relative h-[500px] overflow-hidden"> {/* Ajustez la hauteur selon vos besoins */}
         {/* Image de fond principale */}
-        <img
-          src={back}// Remplacez par le chemin de votre image principale
-          width="{50 %}"
-          height="{50 %}"
+        <Image
+          src={back}
           alt="Hero Background"
-          className="absolute inset-0 w-full h-full object-cover"
+          layout="fill"
+          objectFit="cover"
         />
 
-        {/* Image de superposition */}
-        <img
-          src="/images/hero-overlay.png" // Remplacez par le chemin de votre image de superposition
-          alt="Hero Overlay"
-          className="absolute inset-0 w-full h-full object-cover opacity-60" // Ajustez l'opacité selon vos besoins
-        />
 
         {/* Contenu du Hero */}
         <div className="absolute inset-0 flex flex-col justify-center  text-left text-white p-8">

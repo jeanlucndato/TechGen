@@ -1,6 +1,29 @@
+import Image from "next/image"
+import cont from '../../public/assets/img/cont.jpg'
+
 export default function AboutContent() {
     return (
         <>
+            <div className="relative h-[500px] overflow-hidden"> {/* Ajustez la hauteur selon vos besoins */}
+                {/* Image de fond principale */}
+                <Image
+                    src={cont}
+                    alt="Hero Background"
+                    layout="fill"
+                    objectFit="cover"
+                />
+
+
+                <div className="absolute inset-0 flex flex-col justify-center  text-left text-white p-8">
+                    <h1 className="text-6xl font-bold mb-4">Appropos de Nous</h1>
+                    <p className="text-4xl- mb-8">
+                        Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua enim
+                        minim estudiat veniam siad venumus dolore
+                    </p>
+
+                </div>
+            </div>
+
             <div className="py-12">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -98,5 +121,5 @@ export default function AboutContent() {
                 </div>
             </div>
         </>
-    )
+    );
 }

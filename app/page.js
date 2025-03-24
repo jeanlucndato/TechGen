@@ -1,6 +1,6 @@
 import Navbar from './components/navbar';
 import Hero from './components/hero';
-import Services from './components/service'
+import Service from './components/service'
 import LatestProducts from './components/LatestProducts';
 import CustomerReviews from './components/CustomerReviews';
 import Pricing from './components/ServiceContent';
@@ -11,7 +11,7 @@ export default function Home() {
     <div>
       <Navbar />
       <Hero />
-      <Services />
+      <Service />
       <LatestProducts />
       <CustomerReviews />
       <Footer />

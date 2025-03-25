@@ -1,7 +1,8 @@
-"use client"; // Ajout de la directive "use client"
+"use client";
 import Link from 'next/link';
 import { Bebas_Neue } from 'next/font/google';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 const bebasNeue = Bebas_Neue({
   subsets: ['latin'],
@@ -10,7 +11,8 @@ const bebasNeue = Bebas_Neue({
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Ajout de l'état pour le menu mobile
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,11 +32,13 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-800 bg-opacity-80 backdrop-blur-lg p-3' : 'bg-transparent p-4'
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-gray-800 bg-opacity-80 backdrop-blur-lg p-3'
+          : 'bg-transparent p-4'
         }`}
     >
       <div className="container mx-auto flex flex-col md:flex-row md:justify-between md:items-center">
-        <div className="flex justify-between items-center w-full md:w-auto  ">
+        <div className="flex justify-between items-center w-full md:w-auto">
           <Link
             href="/"
             className={`text-white font-bold text-3xl ${bebasNeue.className}`}
@@ -42,7 +46,7 @@ export default function Navbar() {
             GenTech
           </Link>
           <button
-            className="md:hidden text-white  focus:outline-none"
+            className="md:hidden text-white focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg
@@ -66,22 +70,44 @@ export default function Navbar() {
           </button>
         </div>
         <div
-          className={`space-x-4 mt-4 md:mt-0 md:flex ${isMenuOpen ? 'flex flex-col' : 'hidden'
-            } md:flex  `}
+          className={`space-x-4 mt-4 md:mt-0 md:flex transition-all duration-300 ${isMenuOpen
+              ? 'flex flex-col bg-gray-900 p-4 rounded-md'
+              : 'hidden'
+            } md:flex`}
         >
-          <Link href="/" className="text-gray-300 hover:text-white">
+          <Link
+            href="/"
+            className={`text-gray-300 hover:text-white ${pathname === '/' ? 'text-white border-b-2 border-white' : ''
+              } p-2`}
+          >
             ACCUEIL
           </Link>
-          <Link href="/About" className="text-gray-300 hover:text-white">
+          <Link
+            href="/About"
+            className={`text-gray-300 hover:text-white ${pathname === '/About' ? 'text-white border-b-2 border-white' : ''
+              } p-2`}
+          >
             APPROPOS
           </Link>
-          <Link href="/Service" className="text-gray-300 hover:text-white">
+          <Link
+            href="/Service"
+            className={`text-gray-300 hover:text-white ${pathname === '/Service' ? 'text-white border-b-2 border-white' : ''
+              } p-2`}
+          >
             EQUIPPEMENT
           </Link>
-          <Link href="/Realisation" className="text-gray-300 hover:text-white">
+          <Link
+            href="/Realisation"
+            className={`text-gray-300 hover:text-white ${pathname === '/Realisation' ? 'text-white border-b-2 border-white' : ''
+              } p-2`}
+          >
             REALISATION
           </Link>
-          <Link href="/Contact" className="text-gray-300 hover:text-white">
+          <Link
+            href="/Contact"
+            className={`text-gray-300 hover:text-white ${pathname === '/Contact' ? 'text-white border-b-2 border-white' : ''
+              } p-2`}
+          >
             CONTACT
           </Link>
         </div>

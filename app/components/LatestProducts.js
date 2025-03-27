@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -11,6 +12,8 @@ import prop13 from '../../public/assets/img/prop13.jpeg';
 import prop14 from '../../public/assets/img/prop14.jpg';
 import prop15 from '../../public/assets/img/prop15.jpg';
 import prop16 from '../../public/assets/img/prop16.jpg';
+import betonniereImage from '../../public/assets/img/betonniere.jpg';
+
 
 export default function LatestProducts() {
   const produits = [
@@ -56,38 +59,88 @@ export default function LatestProducts() {
   const [activeDot, setActiveDot] = useState(0);
 
   return (
-    <div className="bg-white py-12">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-semibold mb-6 text-gray-800 text-center md:text-left">Derniers Produits</h2>
-        <p className="text-lg text-gray-700 mb-8 text-center md:text-left">
-          Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor
-          incididunt ut laboret dolore magna aliqua enim minim veniam
-          exercitation
-        </p>
-
-        <div className="flex flex-col md:flex-row justify-center gap-8 max-w-6xl mx-auto">
-          {produits.slice(activeDot, activeDot + 3).map((produit, index) => (
-            <ProductCard
-              key={index}
-              produit={produit}
-              produitEtendu={produitEtendu}
-              setProduitEtendu={setProduitEtendu}
-              isMain={index === 1}
-            />
-          ))}
-        </div>
-
-        <div className="flex justify-center mt-8">
-          {produits.slice(0, produits.length - 2).map((_, index) => (
-            <button
-              key={index}
-              className={`w-3 h-3 rounded-full mx-2 ${activeDot === index ? 'bg-blue-500' : 'bg-gray-300'}`}
-              onClick={() => setActiveDot(index)}
-            />
-          ))}
+    <>
+      {/* la session de service  */}
+      <div className="bg-gray-100 py-12">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-gray-700 relative z-10">
+            <div className="flex flex-col md:flex-row items-center">
+              <div className="w-full md:w-1/2 pr-0 md:pr-4">
+                {/* Image à gauche */}
+                <h2 className="text-3xl font-semibold mb-6 font-serif">
+                  Matériel de Construction
+                </h2>
+                <div className="grid grid-cols-1 gap-4">
+                  <motion.div
+                    className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300 m-[5px] shadow-[5px_5px_5px_rgba(0,0,0,0.3)]"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Image
+                      src={betonniereImage}
+                      alt="Bétonnière"
+                      className="w-full h-64 object-cover rounded-md"
+                    />
+                  </motion.div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 pl-0 md:pl-4">
+                {/* Texte à droite */}
+                <p className="text-base md:text-lg text-gray-600 font-serif">
+                  General Technology assure ses projets avec un matériel performant :
+                  bétonnières, vibreurs, coffrages, échafaudages pour le gros œuvre ;
+                  pelles mécaniques, grues pour le terrassement et levage ; outils
+                  spécialisés pour le second œuvre (maçonnerie, plomberie, etc.). La
+                  sécurité est primordiale, avec équipements de protection et
+                  signalisation. Nous innovons constamment pour des chantiers
+                  efficaces et de qualité.
+                </p>
+                <Link
+                  href="/Service"
+                  className="inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105 mt-4" // ajout de mt-4 pour la marge
+                >
+                  Voir Nos Services
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      {/* fin de la session de service */}
+
+      <div className="bg-white py-12">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-semibold mb-6 text-gray-800 text-center md:text-left">Derniers Produits</h2>
+          <p className="text-lg text-gray-700 mb-8 text-center md:text-left">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor
+            incididunt ut laboret dolore magna aliqua enim minim veniam
+            exercitation
+          </p>
+
+          <div className="flex flex-col md:flex-row justify-center gap-8 max-w-6xl mx-auto">
+            {produits.slice(activeDot, activeDot + 3).map((produit, index) => (
+              <ProductCard
+                key={index}
+                produit={produit}
+                produitEtendu={produitEtendu}
+                setProduitEtendu={setProduitEtendu}
+                isMain={index === 1}
+              />
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-8">
+            {produits.slice(0, produits.length - 2).map((_, index) => (
+              <button
+                key={index}
+                className={`w-3 h-3 rounded-full mx-2 ${activeDot === index ? 'bg-blue-500' : 'bg-gray-300'}`}
+                onClick={() => setActiveDot(index)}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

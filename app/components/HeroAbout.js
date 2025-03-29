@@ -13,8 +13,7 @@ export default function HeroAbout() {
       <div className="absolute inset-0 flex flex-col justify-center items-center text-left text-white p-8">
         <h1 className="text-4xl font-bold mb-4">Appropos de Nous</h1>
         <p className="text-lg">
-          Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua
-          enim minim estudiat veniam siad venumus dolore
+          Chez Gentech, nous construisons plus que des bâtiments et installons plus que des panneaux solaires. Nous bâtissons un avenir durable, où l'innovation et l'engagement envers nos clients sont les fondations de chaque projet.
         </p>
       </div>
     </div>

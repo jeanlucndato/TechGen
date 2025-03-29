@@ -1,212 +1,278 @@
+"use client";
+
+import { motion } from 'framer-motion';
 import Image from 'next/image';
+import {
+  FaFacebook, FaTwitter, FaInstagram, FaLinkedin,
+  FaCode, FaPalette, FaHeadset, FaMobileAlt,
+  FaChartLine, FaShieldAlt
+} from 'react-icons/fa';
 import back from '../../public/assets/img/bg.jpg';
 import prop8 from '../../public/assets/img/prop8.jpg';
 import prop11 from '../../public/assets/img/prop11.jpeg';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import team1 from '../../public/assets/img/team1.jpg';
+import team2 from '../../public/assets/img/team2.jpg';
+import team3 from '../../public/assets/img/team3.jpg';
+import team4 from '../../public/assets/img/team4.jpg';
+
+// Animations
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const scaleUp = {
+  hidden: { scale: 0.95, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { duration: 0.5 }
+  }
+};
 
 export default function AboutContent() {
+  const services = [
+    { icon: <FaCode className="text-3xl" />, title: "Art Of Coding", description: "Nous réalisons des audits énergétiques pour évaluer le potentiel solaire de votre propriété et vous conseiller sur les meilleures solutions à adopter.Nos experts vous guident à travers les démarches administratives, les aides financières disponibles et les avantages économiques de l'énergie solaire." },
+    { icon: <FaCode className="text-3xl" />, title: "Art Of Coding", description: "Nous installons des systèmes solaires thermiques pour la production d'eau chaude sanitaire et le chauffage.Cette solution écologique et économique vous permet de réduire votre dépendance aux énergies fossiles et de diminuer vos factures énergétiques" },
+    { icon: <FaCode className="text-3xl" />, title: "Art Of Coding", description: "Nous installons des systèmes solaires thermiques pour la production d'eau chaude sanitaire et le chauffage.Cette solution écologique et économique vous permet de réduire votre dépendance aux énergies fossiles et de diminuer vos factures énergétique" },
+    { icon: <FaCode className="text-3xl" />, title: "Art Of Coding", description: "Nous installons des systèmes solaires thermiques pour la production d'eau chaude sanitaire et le chauffage.Cette solution écologique et économique vous permet de réduire votre dépendance aux énergies fossiles et de diminuer vos factures énergétique" },
+    { icon: <FaCode className="text-3xl" />, title: "Art Of Coding", description: "Nous installons des systèmes solaires thermiques pour la production d'eau chaude sanitaire et le chauffage.Cette solution écologique et économique vous permet de réduire votre dépendance aux énergies fossiles et de diminuer vos factures énergétique" },
+    { icon: <FaCode className="text-3xl" />, title: "Art Of Coding", description: "Nous installons des systèmes solaires thermiques pour la production d'eau chaude sanitaire et le chauffage.Cette solution écologique et économique vous permet de réduire votre dépendance aux énergies fossiles et de diminuer vos factures énergétique" },
+    // ... autres services
+  ];
+
+
+
   return (
-    <>
-      {/* Section Hero */}
-      <div className="relative h-[600px] overflow-hidden">
-        <Image src={back} alt="Hero Background" layout="fill" objectFit="cover" />
-        <div className="absolute inset-0 flex flex-col justify-center text-left text-white p-8">
-          <h1 className="text-6xl font-bold mb-4">À propos de Nous</h1>
-          <p className="text-4xl mb-8">
-            Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua enim minim estudiat veniam siad venumus dolore
-          </p>
-        </div>
-      </div>
+    <div className="bg-white">
+      {/* Hero Section avec animation */}
+      <motion.div
+        className="relative h-[70vh] min-h-[500px] overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="absolute inset-0 bg-black/50 z-10" />
+        <Image
+          src={back}
+          alt="Notre équipe au travail"
+          fill
+          className="object-cover"
+          priority
+        />
+        <motion.div
+          className="relative z-20 h-full flex flex-col justify-center text-white px-6 sm:px-12 lg:px-24"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          <motion.h1
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 max-w-3xl"
+            variants={fadeIn}
+          >
+            Innovateurs en solutions technologiques
+          </motion.h1>
+          <motion.p
+            className="text-xl sm:text-2xl max-w-2xl mb-8"
+            variants={fadeIn}
+          >
+            Nous transformons les idées en réalités digitales depuis 2010
+          </motion.p>
+          <motion.button
+            className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg w-fit transition-all transform hover:scale-105"
+            variants={fadeIn}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Découvrir notre histoire
+          </motion.button>
+        </motion.div>
+      </motion.div>
 
-      {/* Section 'Art Of Coding', 'Clean Design', 'Amazing Support' */}
-      <div className="py-12 mb-5 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <h3 className="text-2xl font-semibold mb-4 text-red-800">Art Of Coding</h3>
-              <p className="text-gray-600">
-                Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua enim minim estudiat veniam siad venumus dolore
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-2xl font-semibold mb-4 text-red-800">Clean Design</h3>
-              <p className="text-gray-600">
-                Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua enim minim estudiat veniam siad venumus dolore
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-2xl font-semibold mb-4 text-red-800">Amazing Support</h3>
-              <p className="text-gray-600">
-                Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua enim minim estudiat veniam siad venumus dolore
-              </p>
-            </div>
+      {/* Valeurs avec animations */}
+      <motion.section
+        className="py-16 bg-gradient-to-b from-white to-gray-50"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerContainer}
+      >
+        <div className="container mx-auto px-6">
+          <motion.div
+            className="text-center mb-16"
+            variants={fadeIn}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Valeurs Fondatrices</h2>
+            <motion.div
+              className="w-24 h-1 bg-red-600 mx-auto"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            />
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {services.slice(0, 3).map((service, index) => (
+              <motion.div
+                key={index}
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                variants={scaleUp}
+                whileHover={{ y: -5 }}
+              >
+                <div className="text-red-600 mb-4">{service.icon}</div>
+                <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
+      </motion.section>
 
-        {/* Section 'À propos' avec image */}
-        <div className="bg-gray-100 py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h2 className="text-3xl font-bold mb-4">À propos</h2>
-                <p className="text-gray-700 mb-4">
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua. Ut enimet minim veniam magna aliqua. Ut enim minim veniam exercitation laboris ut siad consequat siad minim enum esqudiat dolore.
-                </p>
-                <p className="text-gray-700">
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret tempor incididunt dolore magna consequat siad minim aliqua. Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua. Ut enim minim veniam exercitation laboris ut siad consequat siad minim enum esqudiat dolore.
-                </p>
-              </div>
-              <div>
-                <Image src={prop8} width={500} height={500} alt="Description de l'image" className="w-full rounded-lg" />
-              </div>
-            </div>
+      {/* Notre Histoire avec animation parallax */}
+      <motion.section
+        className="py-16 bg-gray-50 overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <motion.div
+              className="lg:w-1/2"
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src={prop8}
+                  alt="Notre bureau"
+                  className="rounded-xl shadow-xl w-full h-auto"
+                  width={600}
+                  height={400}
+                />
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              className="lg:w-1/2"
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Notre Histoire</h2>
+              {/* ... contenu ... */}
+            </motion.div>
           </div>
         </div>
+      </motion.section>
 
-        {/* Section Services */}
-        <div className="bg-gray-100 py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Répétez ce bloc pour chaque service */}
-              <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  {/* Insérez ici l'icône SVG appropriée pour chaque service */}
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-                <h3 className="text-xl font-semibold mb-2">Art Of Coding</h3>
-                <p className="text-gray-700 text-center">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-              </div>
-              {/* Répétez le bloc ci-dessus pour les autres services (Responsive Design, Feature Reach, etc.) */}
-            </div>
-          </div>
+      {/* Services avec animations en cascade */}
+      <motion.section
+        className="py-16 bg-white"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
+        <div className="container mx-auto px-6">
+          <motion.div
+            className="text-center mb-16"
+            variants={fadeIn}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Domaines d'Expertise</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Des solutions complètes pour tous vos besoins digitaux
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={staggerContainer}
+          >
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                className="bg-gray-50 p-8 rounded-xl hover:bg-white hover:shadow-lg transition-all"
+                variants={scaleUp}
+                whileHover={{
+                  y: -5,
+                  scale: 1.03,
+                  transition: { duration: 0.2 }
+                }}
+              >
+                <motion.div
+                  className="text-red-600 mb-4"
+                  whileHover={{ rotate: 10 }}
+                >
+                  {service.icon}
+                </motion.div>
+                <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
+      </motion.section>
 
-        {/* Section Travailleurs */}
-        <div className="bg-gray-100 py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Répétez ce bloc pour chaque travailleur */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <img src="URL_DE_L_IMAGE_1" alt="Alicia Keys" className="w-full h-64 object-cover rounded-md mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Alicia Keys</h3>
-                <p className="text-gray-600 mb-4">CHEF DE PROJET</p>
-                <p className="text-gray-700">
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolor magna ut consequat siad esqudiat dolor
-                </p>
-                <a href="#" className="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  LIRE LA SUITE -
-                </a>
-              </div>
-              {/* Répétez le bloc ci-dessus pour les autres travailleurs (James Millner, Scarlet Johanson, etc.) */}
-            </div>
-          </div>
+      {/* Équipe avec animations */}
+
+
+      {/* CTA avec animation */}
+      <motion.section
+        className="py-16 bg-red-600 text-white"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      >
+        <div className="container mx-auto px-6 text-center">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold mb-6"
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
+            transition={{ type: "spring" }}
+          >
+            Prêt à transformer votre vision en réalité ?
+          </motion.h2>
+          <motion.button
+            className="bg-white text-red-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Nous Contacter
+          </motion.button>
         </div>
-
-        {/* Section Team */}
-        <div className="bg-blue-100 text-gray-900 
-         py-12">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8">Notre Team</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 justify-center"> {/* Ajout de justify-center */}
-              {/* Membre de l'équipe 1 */}
-              <div className="text-center max-w-xs mx-auto "> {/* Ajout de max-w-xs et mx-auto */}
-                <img src="URL_DE_L_IMAGE_1" alt="Jayson Campbell" className="w-32 h-32 rounded-full mx-auto mb-4" />
-                <h3 className="text-xl text-gray-600 font-semibold mb-2">Jules Bokande</h3>
-                <p className="text-sm text-gray-600 mb-2">C.E.O</p>
-                <p className="text-xs text-gray-500">
-                  Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                </p>
-                <div className="flex justify-center mt-4 space-x-2">
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaFacebook className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaTwitter className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaInstagram className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaLinkedin className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Membre de l'équipe 2 */}
-              <div className="text-center max-w-xs mx-auto"> {/* Ajout de max-w-xs et mx-auto */}
-                <img src="URL_DE_L_IMAGE_1" alt="Jayson Campbell" className="w-32 h-32 rounded-full mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Jayson Campbell</h3>
-                <p className="text-sm text-gray-600 mb-2">CEO, Partner</p>
-                <p className="text-xs text-gray-500">
-                  Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                </p>
-                <div className="flex justify-center mt-4 space-x-2">
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaFacebook className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaTwitter className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaInstagram className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaLinkedin className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Membre de l'équipe 3 */}
-              <div className="text-center max-w-xs mx-auto"> {/* Ajout de max-w-xs et mx-auto */}
-                <Image src={prop11} alt="Jayson Campbell" className="w-32 h-32 rounded-full mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Jayson Campbell</h3>
-                <p className="text-sm text-gray-600 mb-2">CEO, Partner</p>
-                <p className="text-xs text-gray-500">
-                  Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                </p>
-                <div className="flex justify-center mt-4 space-x-2">
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaFacebook className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaTwitter className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaInstagram className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaLinkedin className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Membre de l'équipe 4 */}
-              <div className="text-center max-w-xs mx-auto"> {/* Ajout de max-w-xs et mx-auto */}
-                <img src="URL_DE_L_IMAGE_1" alt="Jayson Campbell" className="w-32 h-32 rounded-full mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Jayson Campbell</h3>
-                <p className="text-sm text-gray-600 mb-2">CEO, Partner</p>
-                <p className="text-xs text-gray-500">
-                  Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                </p>
-                <div className="flex justify-center mt-4 space-x-2">
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaFacebook className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaTwitter className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaInstagram className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-600">
-                    <FaLinkedin className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+      </motion.section>
+    </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
